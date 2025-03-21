@@ -27,4 +27,20 @@ function isValidEmailWithMandatoryParts(email) {
 
 // Test the function
 console.log(isValidEmailWithMandatoryParts(email)); // Output: true
-console.log(isValidEmailWithMandatoryParts(invalidEmail)); // Output: true
+// Function to validate the optional part "xyz" with allowed special characters (_, +, -, .)
+function isValidEmailWithOptionalPart(email) {
+  // Regex to validate "abc", optional "xyz" with allowed special characters, "bridgelabz.", and "co"
+  const regex = /^abc([._+-]?[a-zA-Z0-9]+)?@bridgelabz\.co/;
+  return regex.test(email);
+}
+
+// Test the function
+console.log(isValidEmailWithOptionalPart(email)); // Output: true
+console.log(isValidEmailWithOptionalPart(invalidEmail)); // Output: false
+
+// Additional test cases
+const validEmailWithSpecialChar = "abc.xyz@bridgelabz.co.in";
+console.log(isValidEmailWithOptionalPart(validEmailWithSpecialChar)); // Output: true
+
+const invalidEmailWithInvalidChar = "abc#xyz@bridgelabz.co.in";
+console.log(isValidEmailWithOptionalPart(invalidEmailWithInvalidChar)); // Output: false
