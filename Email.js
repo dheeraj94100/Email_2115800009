@@ -44,3 +44,20 @@ console.log(isValidEmailWithOptionalPart(validEmailWithSpecialChar)); // Output:
 
 const invalidEmailWithInvalidChar = "abc#xyz@bridgelabz.co.in";
 console.log(isValidEmailWithOptionalPart(invalidEmailWithInvalidChar)); // Output: false
+
+// Function to validate the email with optional TLD (2 characters only)
+function isValidEmailWithOptionalTLD(email) {
+  // Regex to validate "abc", optional "xyz" with allowed special characters, "bridgelabz.", "co", and optional TLD (2 characters only)
+  const regex = /^abc([._+-]?[a-zA-Z0-9]+)?@bridgelabz\.co(\.[a-zA-Z]{2})?$/;
+  return regex.test(email);
+}
+
+// Test the function
+console.log(isValidEmailWithOptionalTLD(email)); // Output: true
+console.log(isValidEmailWithOptionalTLD(invalidEmail)); // Output: false
+
+const validEmailWithTLD = "abc.xyz@bridgelabz.co.in";
+console.log(isValidEmailWithOptionalTLD(validEmailWithTLD)); // Output: true
+
+const invalidEmailWithLongTLD = "abc.xyz@bridgelabz.co.inn";
+console.log(isValidEmailWithOptionalTLD(invalidEmailWithLongTLD)); // Output: false
